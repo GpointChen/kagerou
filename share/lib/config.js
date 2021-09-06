@@ -1,8 +1,8 @@
 'use strict'
 
-const VERSION = '0.8.10'
-const CODENAME = 'City of Mirrors'
-const DESCRIPTION = 'なんびとの心も映す鏡の如きヴォカリーズ曲'
+const VERSION = '0.8.11'
+const CODENAME = 'save your tears, save your dreams'
+const DESCRIPTION = 'ささやかな幻よ、煌け！'
 
 const CONFIG_DEFAULT = {
   lang: 'ko',
@@ -225,7 +225,8 @@ const COLUMN_SORTABLE = [
   'tank.damage',
   'tank.heal',
   'heal.per_second',
-  'heal.total'
+  'heal.total',
+  '-etc.death'
 ]
 const COLUMN_MERGEABLE = [
   'encdps', 'damage', 'damage%',
