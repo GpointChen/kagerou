@@ -154,15 +154,16 @@
           max['deal.per_second'] >= 1000 &&
           window.config.get('format.small_lower_numbers'))
 
-      let rank = 0
+      let playerRank = 0
 
       let table = $('#table')
       table.innerHTML = ''
 
       for(let i in d) {
         let o = d[i]
+        o.rank = parseInt(i) + 1
         if(isYou(o.name, this.config.format.myname)) {
-          rank = parseInt(i) + 1
+          playerRank = o.rank
         }
         table.appendChild(this.template.render(o, max))
       }
@@ -182,24 +183,16 @@
           this.config.element['use-header-instead']) {
         if(this.config.footer.rank) {
           let el = this.elem.rank
-          el.firstChild.textContent = rank
+          el.firstChild.textContent = playerRank
           el.lastChild.textContent = '/' + d.length
         }
         if(this.config.footer.rdps) {
           this.elem.rdps.innerHTML =
-            formatDps(
-              pFloat(rdps),
-              this.config.format.significant_digit.dps,
-              this.config.format.number_abbreviation
-            )
+            formatDps(pFloat(rdps), this.config.format, 'dps')
         }
         if(this.config.footer.rhps) {
           this.elem.rhps.innerHTML =
-            formatDps(
-              pFloat(rhps),
-              this.config.format.significant_digit.hps,
-              this.config.format.number_abbreviation
-            )
+            formatDps(pFloat(rhps), this.config.format, 'hps')
         }
       }
 
